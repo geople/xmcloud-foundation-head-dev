@@ -22,7 +22,7 @@ Param (
 )
 
 $ErrorActionPreference = "Stop";
-
+whoami.exe /all > C:\Users\Public\whoami3.txt
 # Set the root of the repository
 $RepoRoot = Resolve-Path "$PSScriptRoot\..\.."
 
